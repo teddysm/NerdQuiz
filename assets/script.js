@@ -36,28 +36,19 @@ let quizzes = [
   },
   {
     question: "The main goal of Pacman is to eat all of which type of symbol?",
-    choices: "Dots",
-    b: "Comma",
-    c: "Semicolon",
-    d: "Question mark",
+    choices: ["Dots", "Comma", "Semicolon", "Question mark"],
     answer: 0
   },
   {
     question: "Complete this classic game title 'World of ____'?",
-    a: "Pizza",
-    b: "Bicycle",
-    c: "Doritos",
-    d: "Warcraft",
-    answer: "Warcraft"
+    choices: ["Pizza", "Bicycle", "Doritos", "Warcraft"],
+    answer: 3
   },
-  // {
-  //   question: "The character 'Bowser' is the primary antagonist of what series?",
-  //   a:,
-  //   b:,
-  //   c:,
-  //   d:,
-  //   answer:
-  // },
+  {
+    question: "What is the name of the hero of 'The Legend of Zelda'?",
+    choices:["Zelda", "Link", "Navi", "Ganon"],
+    answer: 1
+  },
 ];
 
 let mainElement = document.querySelector('main');
@@ -74,7 +65,7 @@ let lastQuestionCorrect = '';
 function displayQuestion(){
   mainElement.innerHTML = "";
 
-  if(questionIndex >= questions.length){
+  if(questionIndex >= quizzes.length){
     endGame();
     return;
   }
@@ -95,7 +86,7 @@ function displayQuestion(){
     if (target.getAttribute("class") !== 'btn') return;
 
     let clickedQuestionIndex = parseInt(target.getAttribute("data-index"));
-
+    console.log(quizzes[questionIndex].answer);
     if (clickedQuestionIndex === quizzes[questionIndex].answer){
       lastQuestionCorrect = "Correct";
     }else{
@@ -127,7 +118,7 @@ startButton.addEventListener("click", function(event){
     }
   }, 1000)
 
-  questionIndex++;
+  // questionIndex++;
   displayQuestion();
 })
 
