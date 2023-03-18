@@ -1,3 +1,17 @@
+let mainElement = document.querySelector('main');
+let startButton = document.querySelector('#start-btn');
+let timerElement = document.querySelector('#timer');
+
+
+let storedArray = [];
+let interval;
+let time = 100;
+let quizIndex = 0;
+let lastQuestionCorrect = '';
+let highScore = 0;
+
+
+
 let quizzes = [
   {
     question: "How many Grand Theft Auto games have been released?",
@@ -20,7 +34,7 @@ let quizzes = [
     answer: 3
   },
   {
-    question: "Pokemon Go' was released for smartphones in which year?",
+    question: "Pokemon Go was released for smartphones in which year?",
     choices: [2015, 2016, 2017, 2018],
     answer: 1
   },
@@ -49,59 +63,73 @@ let quizzes = [
     choices:["Zelda", "Link", "Navi", "Ganon"],
     answer: 1
   },
+  {
+    question:   "The PlayStation console is produced by which company?",
+    choices:["Sony", "Apple", "Google", "Activision"],
+    answer: 0
+  },
+  {
+    question:   "San Andreas is a fictional US state in which game series?",
+    choices:["Counter Strike", "Call of Duty", "Grand Theft Auto", "Sonic"],
+    answer: 2
+  },
 ];
-
-let mainElement = document.querySelector('main');
-let startButton = document.querySelector('#start-btn');
-let timerElement = document.querySelector('#timer');
-
-let interval;
-let time = 100;
-let questionIndex = 0;
-let lastQuestionCorrect = '';
-
 
 
 function displayQuestion(){
   mainElement.innerHTML = "";
 
-  if(questionIndex >= quizzes.length){
+  if(quizIndex >= quizzes.length){
     endGame();
     return;
   }
 
-  let h1El = document.createElement('h1');
-  h1El.textContent = quizzes[questionIndex].question;
-  mainElement.appendChild(h1El);
+  let questions = document.createElement("h1");
+  questions.textContent = quizzes[quizIndex].question;
+  mainElement.appendChild(questions);
 
-  let btnDivEl = document.createElement("div");
-  mainElement.appendChild(btnDivEl);
 
-  let pEl = document.createElement("p");
-  pEl.textContent = lastQuestionCorrect;
-  mainElement.appendChild(pEl);
+  let answers = document.createElement("div");
+  answers.setAttribute("class", "btn-container");
+  mainElement.appendChild(answers);
 
-  btnDivEl.addEventListener("click", function(event){
+  let correct = document.createElement("p");
+  correct.textContent = lastQuestionCorrect;
+  mainElement.appendChild(correct);
+
+  for(let i = 0; i < quizzes[quizIndex].choices.length; i++){
+    let buttonEl = document.createElement('button');
+    buttonEl.textContent = quizzes[quizIndex].choices[i];
+    buttonEl.setAttribute("class", "btn answer-btn");
+    buttonEl.setAttribute("data-index", i);
+    answers.appendChild(buttonEl);
+  }
+
+  answers.addEventListener("click", function(event){
     let target = event.target;
-    if (target.getAttribute("class") !== 'btn') return;
+    if (target.getAttribute("class") !== 'btn answer-btn') return;
 
-    let clickedQuestionIndex = parseInt(target.getAttribute("data-index"));
-    console.log(quizzes[questionIndex].answer);
-    if (clickedQuestionIndex === quizzes[questionIndex].answer){
-      lastQuestionCorrect = "Correct";
+    let clickedQuizIndex = parseInt(target.getAttribute("data-index"));
+
+    if (clickedQuizIndex === quizzes[quizIndex].answer){
+      mainElement.style.backgroundColor = 'green';
+      setTimeout(function(){
+        mainElement.style.backgroundColor = 'lightblue';
+      }, 250)
+      quizIndex++;
+      displayQuestion();
     }else{
       time -= 10;
-      lastQuestionCorrect = "Incorrect";
+      timerElement.textContent = `Time left: ${time}`;
+      mainElement.style.backgroundColor = 'red';
+      setTimeout(function(){
+        mainElement.style.backgroundColor = 'lightblue';
+      }, 250)
+      quizIndex++;
+      displayQuestion();
     }
   })
 
-  for(let i = 0; i < quizzes[questionIndex].choices.length; i++){
-    let buttonEl = document.createElement('button');
-    buttonEl.textContent = quizzes[questionIndex].choices[i];
-    buttonEl.setAttribute("class", "btn");
-    buttonEl.setAttribute("data-index", i);
-    mainElement.appendChild(buttonEl);
-  }
 }
 
 startButton.addEventListener("click", function(event){
@@ -109,7 +137,7 @@ startButton.addEventListener("click", function(event){
 
   interval = setInterval(function(){
     time--;
-    timerElement.textContent = `Time: ${time}`;
+    timerElement.textContent = `Time left: ${time}`;
 
     if (time <= 0){
       clearInterval(interval);
@@ -118,10 +146,62 @@ startButton.addEventListener("click", function(event){
     }
   }, 1000)
 
-  // questionIndex++;
   displayQuestion();
 })
 
+
 function endGame(){
   clearInterval(interval);
+  mainElement.innerHTML = "";
+  // show score
+  let endMessage = document.createElement("h1");
+  endMessage.textContent = "Thank you for playing <3";
+  mainElement.appendChild(endMessage);
+
+  let currentScore = document.createElement("h4");
+  currentScore.textContent = "Your score is: " + time;
+  mainElement.appendChild(currentScore);
+
+  const divEl = document.createElement('div');
+  divEl.innerHTML = 
+  `
+    <form id="user-initials" class="">
+      <label for="initials">Your initials:</label><br>
+      <input type="text" id="initials" name="initials" placeholder="TD"><br><br>
+      <button type="submit" class="btn" id="formButton" value="Submit" formaction='highscore.html'>Submit</button>
+    </form> 
+  `
+  // onclick="window.location.href='highscore.html'"
+  mainElement.appendChild(divEl);
+  let button = document.querySelector('#formButton')
+  button.addEventListener("click", function() {
+    setHighScore();
+  })
+  return
+
+
+
+}
+
+
+function setHighScore(){
+    // TODO: window.location(href=/assets/highscore.js)
+    // window.location.href
+  let formInput = document.querySelector('#initials').value;
+
+  console.log(formInput)
+  let storedScore = JSON.parse(localStorage.getItem("highScore"));
+  if (storedScore !== null && storedScore.length > 0){
+    storedArray = storedScore;
+  }
+
+  let highScoreObj = {
+    score: time,
+    names: formInput
+  };
+  storedArray.push(highScoreObj);
+
+  console.log(storedArray)
+
+  localStorage.setItem("highScore", JSON.stringify(storedArray));
 }

@@ -1,7 +1,55 @@
+*{
+  box-sizing: border-box;
+}
+
 header{
   display: flex;
   justify-content: space-between;
 }
 
+main{
+  text-align: center;
+  color: teal;
+}
 
-/* box-sizing */
+body{
+  background-color: lightblue;
+}
+
+
+.btn-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn {
+  font-size: 15px;
+  padding: 1rem 0;
+  width: 8rem;
+  text-align: center;
+  border: 0.1rem solid teal;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: teal;
+  background-color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.hidden {
+  display: none;
+}
+
+#show {
+  display: block;
+}
+
+table{
+  margin: 20px;
+  text-align: center;
+}
