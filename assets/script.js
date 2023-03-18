@@ -8,7 +8,7 @@ let interval;
 let time = 100;
 let quizIndex = 0;
 let lastQuestionCorrect = '';
-let highScore = 0;
+// let highScore = 0;
 
 
 
@@ -177,10 +177,7 @@ function endGame(){
   button.addEventListener("click", function() {
     setHighScore();
   })
-  return
-
-
-
+  return;
 }
 
 
