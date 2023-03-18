@@ -14,7 +14,7 @@ function getHighScore(){
   highScore.forEach(getLocal);
   function getLocal(item, index, arr){
     playerScore = JSON.parse(highScore[index]);
-    mainElement.appendChild(playerScore);
+    scoreElement.appendChild(playerScore);
    };
 
   // localStorage.getItem("highScore");
