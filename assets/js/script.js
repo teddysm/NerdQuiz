@@ -8,7 +8,6 @@ let interval;
 let time = 100;
 let quizIndex = 0;
 let lastQuestionCorrect = '';
-// let highScore = 0;
 
 
 
@@ -84,9 +83,13 @@ function displayQuestion(){
     return;
   }
 
+  let questionDiv = document.createElement("div");
+  questionDiv.setAttribute("style", "height: 110px");
+
   let questions = document.createElement("h1");
   questions.textContent = quizzes[quizIndex].question;
-  mainElement.appendChild(questions);
+  questionDiv.appendChild(questions);
+  mainElement.appendChild(questionDiv);
 
 
   let answers = document.createElement("div");
@@ -153,7 +156,6 @@ startButton.addEventListener("click", function(event){
 function endGame(){
   clearInterval(interval);
   mainElement.innerHTML = "";
-  // show score
   let endMessage = document.createElement("h1");
   endMessage.textContent = "Thank you for playing <3";
   mainElement.appendChild(endMessage);
@@ -171,8 +173,8 @@ function endGame(){
       <button type="submit" class="btn" id="formButton" value="Submit" formaction='highscore.html'>Submit</button>
     </form> 
   `
-  // onclick="window.location.href='highscore.html'"
   mainElement.appendChild(divEl);
+
   let button = document.querySelector('#formButton')
   button.addEventListener("click", function() {
     setHighScore();
@@ -182,8 +184,6 @@ function endGame(){
 
 
 function setHighScore(){
-    // TODO: window.location(href=/assets/highscore.js)
-    // window.location.href
   let formInput = document.querySelector('#initials').value;
 
   console.log(formInput)

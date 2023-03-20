@@ -9,13 +9,20 @@ header{
 
 main{
   text-align: center;
-  color: teal;
+  color: #334E58;
 }
 
 body{
   background-color: lightblue;
+  background-image: url("../img/gems.jpg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
+#body{
+  background-image: url("../img/console.jpg");
+}
 
 .btn-container{
   display: flex;
@@ -23,14 +30,15 @@ body{
 }
 
 .btn {
+  border-radius: 10px;
   font-size: 15px;
   padding: 1rem 0;
   width: 8rem;
   text-align: center;
-  border: 0.1rem solid teal;
+  border: 0.2rem solid #1B998B;
   margin-bottom: 1rem;
   text-decoration: none;
-  color: teal;
+  color: #022B3A;
   background-color: white;
 }
 
@@ -41,15 +49,18 @@ body{
   transition: transform 150ms;
 }
 
-.hidden {
-  display: none;
+#score{
+  padding-top: 10px;
+  color: white;
 }
 
-#show {
-  display: block;
-}
-
-table{
-  margin: 20px;
+#high-score{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  list-style: inside url("/assets/img/controller.png");
+  word-spacing: 3px;
+  font-weight: bold;
+  background-color: #04293f;
   text-align: center;
 }

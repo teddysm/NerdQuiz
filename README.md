@@ -1,14 +1,32 @@
 # CodeQuiz
+This is a quiz for nerds. All the questions are gaming related.
 
-# 04 Web APIs: Code Quiz
 
-## Your Task
 
-At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
+## Table of Contents 
+- [Usage](#usage)
+- [Links](#links)
+- [Features](#features)
+- [User Story](#user-story)
+- [Acceptance Criteria](#acceptance-criteria)
 
-To help familiarize you with these tests and allow you to use the skills covered in this module, this Challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
 
-This week’s coursework will equip you with all the skills you need to succeed in this assignment.
+## Usage
+
+![Screenshot](./img/homescreen.png)
+![Screenshot](./img/quizstart.png)
+![Screenshot](./img/scorescreen.png)
+
+## Links
+
+- Github page: https://github.com/teddysm/CodeQuiz
+- Deployed page: https://teddysm.github.io/CodeQuiz/
+
+
+## Features
+
+- On the main page, user can start the game by clicking the start button, check the current scoreboard by clicking on the highscore button.
+- Once the quiz begins, 
 
 ## User Story
 
@@ -34,11 +52,7 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 
-## Mock-Up
 
-The following animation demonstrates the application functionality:
-
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
 
 ## Grading Requirements
 
