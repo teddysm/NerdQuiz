@@ -23,6 +23,8 @@ body{
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
 }
 
 #body{
@@ -56,14 +58,14 @@ body{
 
 #score{
   padding-top: 10px;
-  color: white;
+  color: crimson;
 }
 
 #high-score{
   width: 100%;
   margin-top: 10px;
   margin-bottom: 15px;
-  list-style: inside url("/assets/img/controller.png");
+  list-style: inside url("../img/controller.png");
   word-spacing: 3px;
   font-weight: bold;
   background-color: #04293f;
