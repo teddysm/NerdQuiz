@@ -78,6 +78,7 @@ let quizzes = [
 function displayQuestion(){
   mainElement.innerHTML = "";
 
+
   if(quizIndex >= quizzes.length){
     endGame();
     return;
@@ -85,7 +86,7 @@ function displayQuestion(){
 
   let questionDiv = document.createElement("div");
   questionDiv.setAttribute("style", "height: 110px");
-
+  mainElement.setAttribute("style", "background-color: lightblue");
   let questions = document.createElement("h1");
   questions.textContent = quizzes[quizIndex].question;
   questionDiv.appendChild(questions);

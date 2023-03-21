@@ -1,6 +1,10 @@
 # CodeQuiz
 This is a quiz for nerds. All the questions are gaming related.
 
+## Description
+
+- I want to create a quiz game webapp that have questions about gaming
+- This project helps me better understand local storage, event listeners, DOM manipulations
 
 
 ## Table of Contents 
@@ -13,9 +17,12 @@ This is a quiz for nerds. All the questions are gaming related.
 
 ## Usage
 
-![Screenshot](./img/homescreen.png)
-![Screenshot](./img/quizstart.png)
-![Screenshot](./img/scorescreen.png)
+![Screenshot](./assets/img/homescreen.png)
+
+![Screenshot](./assets/img/quizstart.png)
+
+![Screenshot](./assets/img/scorescreen.png)
+
 
 ## Links
 
@@ -26,7 +33,12 @@ This is a quiz for nerds. All the questions are gaming related.
 ## Features
 
 - On the main page, user can start the game by clicking the start button, check the current scoreboard by clicking on the highscore button.
-- Once the quiz begins, 
+- Once the quiz begins, the game cycles through a list of 12 questions, user can choose from 4 options
+- Clicking on the wrong answer will flash the screen red, right answer will flash green
+- The game ends when user runs out of time or completes all 12 questions
+- User can submit their initials to be saved to the Scoreboard (local storage)
+- Upon hitting submit, user will be directed to the HighScore page
+
 
 ## User Story
 

@@ -9,7 +9,12 @@ header{
 
 main{
   text-align: center;
-  color: #334E58;
+  color: #022B3A;
+}
+
+main h1{
+  margin-top: 0;
+  margin-bottom: 35px;
 }
 
 body{
@@ -32,8 +37,8 @@ body{
 .btn {
   border-radius: 10px;
   font-size: 15px;
-  padding: 1rem 0;
-  width: 8rem;
+  padding: 1.2rem 0;
+  width: 10rem;
   text-align: center;
   border: 0.2rem solid #1B998B;
   margin-bottom: 1rem;
