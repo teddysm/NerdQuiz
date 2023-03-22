@@ -10,7 +10,7 @@ let quizIndex = 0;
 let lastQuestionCorrect = '';
 
 
-
+// initialize all questions, answer choices and correct answer
 let quizzes = [
   {
     question: "How many Grand Theft Auto games have been released?",
@@ -74,11 +74,13 @@ let quizzes = [
   },
 ];
 
-
+// clear the screen and display the questions + answer choices
+// when user clicks on an answer, the screen will flash to announce answer correctness
+// then moves to the next question
 function displayQuestion(){
   mainElement.innerHTML = "";
 
-
+  // end the quiz when out of questions
   if(quizIndex >= quizzes.length){
     endGame();
     return;
@@ -86,7 +88,6 @@ function displayQuestion(){
 
   let questionDiv = document.createElement("div");
   questionDiv.setAttribute("style", "height: 110px");
-  mainElement.setAttribute("style", "background-color: lightblue");
   let questions = document.createElement("h1");
   questions.textContent = quizzes[quizIndex].question;
   questionDiv.appendChild(questions);
@@ -101,6 +102,7 @@ function displayQuestion(){
   correct.textContent = lastQuestionCorrect;
   mainElement.appendChild(correct);
 
+  // populate questions and answer choices
   for(let i = 0; i < quizzes[quizIndex].choices.length; i++){
     let buttonEl = document.createElement('button');
     buttonEl.textContent = quizzes[quizIndex].choices[i];
@@ -109,6 +111,7 @@ function displayQuestion(){
     answers.appendChild(buttonEl);
   }
 
+  // check answer and flash screen
   answers.addEventListener("click", function(event){
     let target = event.target;
     if (target.getAttribute("class") !== 'btn answer-btn') return;
@@ -136,6 +139,7 @@ function displayQuestion(){
 
 }
 
+// run this function when user clicks start game
 startButton.addEventListener("click", function(event){
   mainElement.innerHTML = "";
 
@@ -153,7 +157,7 @@ startButton.addEventListener("click", function(event){
   displayQuestion();
 })
 
-
+// handle end game
 function endGame(){
   clearInterval(interval);
   mainElement.innerHTML = "";
@@ -183,7 +187,7 @@ function endGame(){
   return;
 }
 
-
+// handle high score
 function setHighScore(){
   let formInput = document.querySelector('#initials').value;
 
