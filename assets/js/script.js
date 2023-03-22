@@ -7,7 +7,6 @@ let storedArray = [];
 let interval;
 let time = 100;
 let quizIndex = 0;
-let lastQuestionCorrect = '';
 
 
 // initialize all questions, answer choices and correct answer
@@ -98,11 +97,7 @@ function displayQuestion(){
   answers.setAttribute("class", "btn-container");
   mainElement.appendChild(answers);
 
-  let correct = document.createElement("p");
-  correct.textContent = lastQuestionCorrect;
-  mainElement.appendChild(correct);
-
-  // populate questions and answer choices
+  // populate answer choices
   for(let i = 0; i < quizzes[quizIndex].choices.length; i++){
     let buttonEl = document.createElement('button');
     buttonEl.textContent = quizzes[quizIndex].choices[i];
