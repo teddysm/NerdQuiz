@@ -26,8 +26,8 @@ This is a quiz for nerds. All the questions are gaming related.
 
 ## Links
 
-- Github page: https://github.com/teddysm/CodeQuiz
-- Deployed page: https://teddysm.github.io/CodeQuiz/
+- Github page: https://github.com/teddysm/NerdQuiz
+- Deployed page: https://teddysm.github.io/NerdQuiz/
 
 
 ## Features
